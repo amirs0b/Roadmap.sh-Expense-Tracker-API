@@ -8,6 +8,8 @@ import exportValidation from "./Middlewares/ExportValidation.js";
 import isAdmin from "./Middlewares/IsAdmin.js";
 import isLogin from "./Middlewares/IsLogin.js";
 import authRouter from "./Routes/Auth.js";
+import userRouter from "./Routes/User.js";
+import expenseRoutes from "./Routes/Expense.js";
 
 
 const __filename = fileURLToPath(import.meta.url);
@@ -19,6 +21,9 @@ app.use(morgan("dev"));
 app.use('/uploads',express.static("Public/Uploads"));
 app.use("/api/auth",authRouter);
 app.use(exportValidation);
+
+app.use("/api/users", userRouter)
+app.use("/api/expenses",expenseRoutes)
 
 
 
