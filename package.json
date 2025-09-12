@@ -1,0 +1,33 @@
+{
+  "name": "expense-tracker-api",
+  "version": "1.0.0",
+  "description": "Backend API for managing personal expenses with user authentication using JWT. Features include CRUD operations for expenses, expense filtering by date and category, and secure user signup/login. Built as a beginner-level project following roadmap.sh guidelines.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js"
+  },
+  "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/amirs0b/Roadmap.sh-Expense-Tracker-API.git"
+  },
+  "author": "Amir Sobhani",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/amirs0b/Roadmap.sh-Expense-Tracker-API/issues"
+  },
+  "homepage": "https://github.com/amirs0b/Roadmap.sh-Expense-Tracker-API#readme",
+  "dependencies": {
+    "bcryptjs": "^3.0.2",
+    "cors": "^2.8.5",
+    "dotenv": "^17.2.2",
+    "express": "^5.1.0",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.18.1",
+    "morgan": "^1.10.1",
+    "multer": "^2.0.2",
+    "nodemon": "^3.1.10",
+    "vanta-api": "^1.2.7"
+  }
+}
