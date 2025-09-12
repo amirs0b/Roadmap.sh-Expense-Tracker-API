@@ -10,6 +10,9 @@ import isLogin from "./Middlewares/IsLogin.js";
 import authRouter from "./Routes/Auth.js";
 import userRouter from "./Routes/User.js";
 import expenseRoutes from "./Routes/Expense.js";
+import swaggerUi from 'swagger-ui-express';
+import swaggerDocument from './swagger.js'
+
 
 
 const __filename = fileURLToPath(import.meta.url);
@@ -24,7 +27,7 @@ app.use(exportValidation);
 
 app.use("/api/users", userRouter)
 app.use("/api/expenses",expenseRoutes)
-
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 
 

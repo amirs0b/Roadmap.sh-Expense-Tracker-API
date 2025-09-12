@@ -1,4 +1,4 @@
-import Expense from "./models/ExpenseMd.js";
+import Expense from "../Models/ExpenseMd.js";
 import ApiFeatures, {catchAsync, HandleERROR} from "vanta-api";
 
 

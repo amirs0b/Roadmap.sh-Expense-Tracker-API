@@ -1,4 +1,4 @@
-import User from "./models/UserCn.js";
+import User from "../Models/UserMd.js";
 import ApiFeatures, {catchAsync, HandleERROR} from "vanta-api";
 
 export const getAllUsers = catchAsync(async (req, res, next) => {
