@@ -4,7 +4,8 @@ import {deleteExpense, getAllExpenses, getAllExpensesFilter, updateExpense} from
 import isLogin from "../Middlewares/IsLogin.js";
 
 const expenseRoutes = express.Router();
-expenseRoutes.route("/").get(isAdmin,getAllExpenses).get(isLogin,getAllExpensesFilter);
+expenseRoutes.route("/").get(isAdmin,getAllExpenses)
+expenseRoutes.route("/my-expenses").get(isLogin, getAllExpensesFilter);
 expenseRoutes.route("/:id").patch(isLogin, updateExpense).delete(isLogin, deleteExpense);
 
 
