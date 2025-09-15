@@ -29,9 +29,7 @@ export const getAllExpenses = catchAsync(async (req, res, next) => {
 
 
 export const getAllExpensesFilter = catchAsync(async (req, res, next) => {
-    if (req.role !== "admin" && req.userId !== req.params.id) {
-        return next(new HandleERROR("You are not authorized to view these expenses", 403));
-    }
+
     const features = new ApiFeatures(Expense, req.query, req.role)
         .addManualFilters(req.role === "admin" ? {} : {userId: req.userId})
         .filter()
@@ -55,13 +53,19 @@ export const updateExpense = catchAsync(async (req, res, next) => {
 });
 
 export const deleteExpense = catchAsync(async (req, res, next) => {
-    if (req.role !== "admin" && req.userId !== req.params.id) {
-        return next(new HandleERROR("You are not authorized to delete expenses", 403));
+    const { id } = req.params;
+    const expense = await Expense.findById(id);
+
+    if (!expense) {
+        return next(new HandleERROR("Expense not found", 404));
     }
-    const {id} = req.params;
+
+    if (req.role !== 'admin' && expense.userId.toString() !== req.userId) {
+        return next(new HandleERROR("You are not authorized to delete this expense", 403));
+    }
     await Expense.findByIdAndDelete(id);
     return res.status(204).json({
-        status: "success", data: null
+        status: "success",message:"deleted successfully" ,data: null
     });
 });
 
